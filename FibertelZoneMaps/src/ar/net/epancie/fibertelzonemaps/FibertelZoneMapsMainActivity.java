@@ -223,6 +223,11 @@ public class FibertelZoneMapsMainActivity extends Activity {
 		
 	}
 	
+// Log
+	private void log(String TAG, String text){
+		Log.i(TAG,text);
+	}
+	
 	//HTTPGetTask
 	private class HttpGetTask extends AsyncTask<String, Void, List<AccessPointData>> {
   	    
@@ -258,7 +263,7 @@ public class FibertelZoneMapsMainActivity extends Activity {
 	    	//to obtain my possition
     		if (mBestReading == null){
     			Log.i(TAG, "HttpGetTask ->onPostExecute: it is not posible to determine your possition");
-    			Toast.makeText(getApplicationContext(), "it is not posible to determine your possition", Toast.LENGTH_LONG).show();
+    			Toast.makeText(getApplicationContext(), "No es posible determinar su ubicacion", Toast.LENGTH_LONG).show();
     			mMyPossition =  DEFAULTPOS;
     		}else{
     			//get Lat and Lng form mBestReading and assing to mMyPossition
