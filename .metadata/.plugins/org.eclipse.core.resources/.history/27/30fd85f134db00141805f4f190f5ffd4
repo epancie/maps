@@ -1,0 +1,93 @@
+package ar.net.epancie.fibertelzonemaps;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpGet;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
+import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.net.http.AndroidHttpClient;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+
+
+public class FibertelZoneMapsMainActivity extends Activity {
+
+	private final String TAG = "FibertelZoneMapsMainActivity";
+	private static final LatLng DEFAULTPOS = new LatLng(-34.603259, -58.378258);//BS AS
+	private static final String URL = "http://200.42.4.24/cgi-bin/fiberzonejson.pl";
+	
+	//Map Object
+	private GoogleMap mMap;
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        Log.i(TAG, "-------------Enter to OnCreate------------------");
+        setContentView(R.layout.activity_fibertel_zone_maps_main);
+        
+        Log.i(TAG, "OnCreate: HttpGetTask.execute(" + URL + ")");
+        new HttpGetTask().execute(URL);
+        
+        
+    }
+
+    private class HttpGetTask extends AsyncTask<String, Void, List<AccessPointData>> {
+
+    	    	
+    	@SuppressWarnings("deprecation")
+		AndroidHttpClient mClient = AndroidHttpClient.newInstance("");
+    	
+    	
+		@Override
+		protected List<AccessPointData> doInBackground(String... params) {
+			
+			Log.i(TAG, "-------------Enter to OnCreate------------------");
+			
+			HttpGet request = new HttpGet(params[0]);
+			JOSNGetAccessPointData responseHandler = new JOSNGetAccessPointData();
+
+			try {
+
+				// Get Access Point data in JSON format and Parse data into a list of AccessPointData List
+				return mClient.execute(request, responseHandler);
+
+			} catch (ClientProtocolException e) {
+				Log.i(TAG, "ClientProtocolException");
+			} catch (IOException e) {
+				Log.i(TAG, "IOException");
+			}
+
+			return null;
+		}
+    	
+		
+    }
+    
+    protected void onPostExecute(List<AccessPointData> result) {
+    	
+    	Log.i(TAG, "-------------onPostExecute------------------");
+    	
+    	mMap =  ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+    	
+    	if (mMap != null){
+    		Log.i(TAG, "onPostExecute: mMap exist");
+    		//add a mark for every access point in the map
+    	
+    	}
+    	
+    }
+    
+    
+
+}

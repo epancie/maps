@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;description&apos; in &apos;ar.net.epancie.fibertelzonemaps.AccessPointData.setDescription(...)&apos; to &apos;locationType&apos;&#x0D;&#x0A;- Original project: &apos;FibertelZoneMaps&apos;&#x0D;&#x0A;- Original element: &apos;ar.net.epancie.fibertelzonemaps.AccessPointData.setDescription(String).description&apos;&#x0D;&#x0A;- Renamed element: &apos;description&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;description&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;ar.net.epancie.fibertelzonemaps{AccessPointData.java[AccessPointData~setDescription~QString;@description!604!621!611!621!QString;!0!true" name="locationType" references="true" stamp="1428181709775" version="1.0"/>
+</session>

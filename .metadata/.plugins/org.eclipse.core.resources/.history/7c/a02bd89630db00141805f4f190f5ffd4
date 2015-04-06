@@ -1,0 +1,30 @@
+package ar.net.epancie.fibertelzonemaps;
+
+import com.google.android.gms.maps.model.LatLng;
+
+import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+
+
+public class FibertelZoneMapsMainActivity extends Activity {
+
+	private final String TAG = "FibertelZoneMapsMainActivity";
+	private static final LatLng DEFAULTPOS = new LatLng(-34.603259, -58.378258);//BS AS
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fibertel_zone_maps_main);
+        
+        Log.i(TAG, "---------------------OnCreate-------------------");
+        
+        
+    }
+
+
+
+}

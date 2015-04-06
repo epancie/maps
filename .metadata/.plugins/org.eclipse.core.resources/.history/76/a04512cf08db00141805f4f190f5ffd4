@@ -1,0 +1,5 @@
+package ar.net.epancie.fibertelzonemaps;
+
+public class JOSNGetAccessPointData {
+
+}
